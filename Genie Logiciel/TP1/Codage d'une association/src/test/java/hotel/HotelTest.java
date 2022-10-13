@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.HashMap;
 
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
 import main.java.hotel.Chambre;
@@ -11,10 +12,15 @@ import main.java.hotel.Hotel;
 
 class HotelTest {
 	
+	private Hotel hotelPourTest; 
 	private final String messageErreurAttendu = new String("L'hotel doit contenir au moins deux chambres"); 
 	private final boolean chambreCreer = true; 
 	private final boolean erreurDeclanche = true;  
 	
+	@Before
+	void setUp() {
+		hotelPourTest = makeHotel(); // permet de créer un hotel avec deux chambre dedans
+	}
 	@Test
 	void testHotel() {
 		HashMap<Integer, Chambre> chambres = new HashMap<>(); 
@@ -51,12 +57,11 @@ class HotelTest {
 	
 	@Test
 	void testAjouter() {
-		Hotel hotel = this.makeHotel(); // Un hotel doit contenir au moins deux chambres
-		if(hotel != null) {
-			assertTrue(hotel.ajouter(Chambre.creer(5))); 
+		if(hotelPourTest != null) {
+			assertTrue(hotelPourTest.ajouter(Chambre.creer(5))); 
 			// tester si la chambre est vraiment ajout�e
 			try {
-				assertTrue(hotel.ajouter(Chambre.creer(5))); 
+				assertTrue(hotelPourTest.ajouter(Chambre.creer(5))); 
 				assertTrue(false); 
 			}catch(Error er) {
 				if(er.getMessage().equals(this.messageChambreDejaExiste(5))) {
@@ -67,7 +72,7 @@ class HotelTest {
 				}
 			}
 			//Tester l'ajout d'une valeur null
-			assertTrue(hotel.ajouter(null) == false); 						
+			assertTrue(hotelPourTest.ajouter(null) == false); 						
 		}
 	}
 	
