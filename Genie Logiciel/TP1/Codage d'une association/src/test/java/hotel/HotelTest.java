@@ -51,10 +51,10 @@ class HotelTest {
 	
 	@Test
 	void testAjouter() {
-		Hotel hotel = this.makeHotel(); 
+		Hotel hotel = this.makeHotel(); // Un hotel doit contenir au moins deux chambres
 		if(hotel != null) {
 			assertTrue(hotel.ajouter(Chambre.creer(5))); 
-			// tester si la chambre est vraiment ajoutée
+			// tester si la chambre est vraiment ajoutï¿½e
 			try {
 				assertTrue(hotel.ajouter(Chambre.creer(5))); 
 				assertTrue(false); 
@@ -62,14 +62,14 @@ class HotelTest {
 				if(er.getMessage().equals(this.messageChambreDejaExiste(5))) {
 					assertTrue(erreurDeclanche); 
 				}else {
+					System.out.println("Message d'erreur: " + er.getMessage());
 					assertTrue(!erreurDeclanche); 
 				}
 			}
+			//Tester l'ajout d'une valeur null
 			assertTrue(hotel.ajouter(null) == false); 						
 		}
 	}
-	
-	@Test
 	
 	private Hotel makeHotel() {
 		HashMap<Integer, Chambre> chambres = new HashMap<>(); 
@@ -85,7 +85,7 @@ class HotelTest {
 	}
 	
 	private String messageChambreDejaExiste(int numeroChambre) {
-		return "La chambre numero " + numeroChambre + " existe déjà"; 
+		return "La chambre numero " + numeroChambre + " existe dÃ©jÃ "; 
 	}
 	
 }
