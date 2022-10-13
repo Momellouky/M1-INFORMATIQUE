@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 /**
- * Repr�sente un hotel caractairis� par son nom et ses chambres.
+ * Représente un hotel caractairisé par son nom et ses chambres.
  *
  * @author Mohamed MELLOUKY. Relecture par Ayoub QUAMAR
  * @version 0.1.0
@@ -16,11 +16,11 @@ public class Hotel {
 	protected HashMap<Integer, Chambre> chambres;
 	
 	/**
-	 * Permet de construire un hotel � partir de son nom, et un ensemble des chambres dont la taille
-	 * est supp�rieure ou �gale � 2.
+	 * Permet de construire un hotel à partir de son nom, et un ensemble des chambres dont la taille
+	 * est suppérieure ou égale à 2.
 	 *
-	 * @param nom :  repr�sente le nom de l'hotel.
-	 * @param chambres : repr�sente les chambres d�j� existantes dans l'hotel
+	 * @param nom :  représente le nom de l'hotel.
+	 * @param chambres : représente les chambres déjà existantes dans l'hotel
 	 */
 	public Hotel(String nom, HashMap<Integer, Chambre> chambres) {
 		if(chambres == null || chambres.size() < 2) {
@@ -54,12 +54,12 @@ public class Hotel {
 	}
 	
 	/**
-	 * Permet d'ajouter une nouvelle chambre � l'hotel. Il n'y a pas des contraintes sur 
-	 * le nombre de chambre � ajouter. Par contre, le numero de la chambre doit etre 
-	 * unique � la nouvelle chambre.
+	 * Permet d'ajouter une nouvelle chambre à l'hotel. Il n'y a pas des contraintes sur 
+	 * le nombre de chambre à ajouter. Par contre, le numero de la chambre doit etre 
+	 * unique à la nouvelle chambre.
 	 *
-	 * @param nouvelleChambre : repr�sente la nouvelle chambre � ajouter.
-	 * @return <b>true</b> si la chambre a �t� bien ajout�e
+	 * @param nouvelleChambre : représente la nouvelle chambre à ajouter.
+	 * @return <b>true</b> si la chambre a été bien ajoutée
 	 * 			<b>false</b> sinon.
 	 */
 	public boolean ajouter(Chambre nouvelleChambre) {
@@ -68,8 +68,11 @@ public class Hotel {
 		this.chambres.put(nouvelleChambre.getNumeroChambre(), nouvelleChambre);
 		return true;
 	}
+	
 	/**
-	 * Permet de modifier le numero d'une chambre déjà existante.
+	 * Permet de modifier le numero d'une chambre déjà existante. 
+	 * La méthode ne permet pas de modifier le numero d'une chambre par un nouveau numero 
+	 * associé d'une autre chambre déjà existante. 
 	 *
 	 * @param numeroChambre : représente l'ancien numero de la chambre.
 	 * @param nouveauNumero : représente le nouveau numéro de la chambre.
@@ -101,6 +104,13 @@ public class Hotel {
 		return chambreSupprimer != null; 
 	}
 
+	/**
+	 * Permet de verifier l'existance d'une chambre dans la liste des chambres 
+	 * de l'hotel.
+	 * @param numeroChambre : le numero de la chambre à rechercher.
+	 * @return La chambre correspendante à au numero de la chambre fournit en argument. 
+	 * 		<b>null</b> si aucune chambre associé au numero de chambre fournit existe. 
+	 */
 	private Chambre chercherChambre(int numeroChambre) {
 		return this.chambres.get(numeroChambre); 
 	}
