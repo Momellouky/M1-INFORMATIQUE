@@ -29,11 +29,30 @@ public class Hotel {
 		this.chambres = new HashMap<>(chambres.size()); 
 		this.nom = nom;
 		Set<Integer> keysSet = chambres.keySet(); 
-		for (Iterator<Integer> it = keysSet.iterator(); it.hasNext(); it.next()) {
+		for (Iterator<Integer> it = keysSet.iterator(); it.hasNext();) {
 			Integer numeroChambreCourant = it.next(); 
 			this.chambres.put(numeroChambreCourant, chambres.get(numeroChambreCourant));
 		}
 	}
+	
+	/**
+	 * Permet de récuperer une copie du nom de l'hotel.
+	 * @return nom : une chaine de caractère qui représente le nom de l'hotel.
+	 */
+	public String getNomHotel() {
+		return new String(nom); 
+	}
+	
+	/**
+	 * Permet de récuperer une copie de la liste des chambres disponible dans l'hotel.
+	 * 
+	 * @return La liste des chambres de l'hotel.
+	 */
+	@SuppressWarnings("unchecked")
+	public HashMap<Integer, Chambre> getChambresHotel(){
+		return (HashMap<Integer, Chambre>)this.chambres.clone(); 
+	}
+	
 	/**
 	 * Permet d'ajouter une nouvelle chambre � l'hotel. Il n'y a pas des contraintes sur 
 	 * le nombre de chambre � ajouter. Par contre, le numero de la chambre doit etre 
@@ -62,15 +81,24 @@ public class Hotel {
 		if (chambreModifier == null) { // si le numero du chambre données ne correspend à aucune chambre.
 			return false; 
 		}
+		if(this.chercherChambre(nouveauNumero) != null) { // Il existe une autre chambre qui porte le nouveau numero données en args.
+			return false; 
+		}
 		chambreModifier.setNumeroChambre(nouveauNumero);
 		return true;
 	}
-
+	
+	/**
+	 * Permet de supprimer une chambre de la liste des chambres de l'hotel 
+	 * s'elle existe déjà dans cette liste. 
+	 *
+	 * @param numeroChambre : le numero de la chambre à supprimer
+	 * @return <b>true</b> si la suppression est effectuée avec succés
+	 * 		<b>false</b> sinon. 
+	 */
 	public boolean supprimer(int numeroChambre) {
-		Chambre chambreSupprimer = this.chercherChambre(numeroChambre); 
-		if(chambreSupprimer == null) return false; 
-		this.chambres.remove(chambreSupprimer); 
-		return false; 
+		Object chambreSupprimer = this.chambres.remove(numeroChambre); 
+		return chambreSupprimer != null; 
 	}
 
 	private Chambre chercherChambre(int numeroChambre) {
