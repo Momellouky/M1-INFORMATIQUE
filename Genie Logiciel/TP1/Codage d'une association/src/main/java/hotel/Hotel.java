@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 /**
- * Représente un hotel caractairisé par son nom et ses chambres.
+ * Reprï¿½sente un hotel caractairisï¿½ par son nom et ses chambres.
  *
  * @author Mohamed MELLOUKY. Relecture par Ayoub QUAMAR
  * @version 0.1.0
@@ -16,11 +16,11 @@ public class Hotel {
 	protected HashMap<Integer, Chambre> chambres;
 	
 	/**
-	 * Permet de construire un hotel à partir de son nom, et un ensemble des chambres dont la taille
-	 * est suppérieure ou égale à 2.
+	 * Permet de construire un hotel ï¿½ partir de son nom, et un ensemble des chambres dont la taille
+	 * est suppï¿½rieure ou ï¿½gale ï¿½ 2.
 	 *
-	 * @param nom :  représente le nom de l'hotel.
-	 * @param chambres : représente les chambres déjà existantes dans l'hotel
+	 * @param nom :  reprï¿½sente le nom de l'hotel.
+	 * @param chambres : reprï¿½sente les chambres dï¿½jï¿½ existantes dans l'hotel
 	 */
 	public Hotel(String nom, HashMap<Integer, Chambre> chambres) {
 		if(chambres == null || chambres.size() < 2) {
@@ -35,12 +35,12 @@ public class Hotel {
 		}
 	}
 	/**
-	 * Permet d'ajouter une nouvelle chambre à l'hotel. Il n'y a pas des contraintes sur 
-	 * le nombre de chambre à ajouter. Par contre, le numero de la chambre doit etre 
-	 * unique à la nouvelle chambre.
+	 * Permet d'ajouter une nouvelle chambre ï¿½ l'hotel. Il n'y a pas des contraintes sur 
+	 * le nombre de chambre ï¿½ ajouter. Par contre, le numero de la chambre doit etre 
+	 * unique ï¿½ la nouvelle chambre.
 	 *
-	 * @param nouvelleChambre : représente la nouvelle chambre à ajouter.
-	 * @return <b>true</b> si la chambre a été bien ajoutée
+	 * @param nouvelleChambre : reprï¿½sente la nouvelle chambre ï¿½ ajouter.
+	 * @return <b>true</b> si la chambre a ï¿½tï¿½ bien ajoutï¿½e
 	 * 			<b>false</b> sinon.
 	 */
 	public boolean ajouter(Chambre nouvelleChambre) {
@@ -50,17 +50,17 @@ public class Hotel {
 		return true;
 	}
 	/**
-	 * Permet de modifier le numero d'une chambre déjà existante.
+	 * Permet de modifier le numero d'une chambre dÃ©jÃ  existante.
 	 *
-	 * @param numeroChambre : représente l'ancien numero de la chambre.
-	 * @param nouveauNumero : représente le nouveau numéro de la chambre.
-	 * @return <b>true</b> si la modification est éffectuée avec succés
+	 * @param numeroChambre : reprÃ©sente l'ancien numero de la chambre.
+	 * @param nouveauNumero : reprÃ©sente le nouveau numÃ©ro de la chambre.
+	 * @return <b>true</b> si la modification est Ã©ffectuÃ©e avec succÃ©s
 	 * 		<b>false</b> sinon.
 	 */
 	public boolean modifier(int numeroChambre, int nouveauNumero) {
 		Chambre chambreModifier = this.chercherChambre(numeroChambre);
-		if (chambreModifier == null) {
-			return false;
+		if (chambreModifier == null) { // si le numero du chambre donnÃ©es ne correspend Ã  aucune chambre.
+			return false; 
 		}
 		chambreModifier.setNumeroChambre(nouveauNumero);
 		return true;
