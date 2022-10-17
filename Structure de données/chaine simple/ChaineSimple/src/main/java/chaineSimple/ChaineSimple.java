@@ -51,4 +51,19 @@ public class ChaineSimple<E> {
 		}
 		return resultat; 
 	}
+	
+	/**
+	 * Permet d'ajouter un maillon juste aprés le premier 
+	 * élément de la chaine. 
+	 * 
+	 * @param valeur : la valeur à ajouter.
+	 * @return une nouvelle chaine simple, son début c'est l'element 
+	 * juste inséré. 
+	 */
+	public ChaineSimple<E> insererElementSuivant(E valeur){
+		ChaineSimple<E> resultat = new ChaineSimple<>(valeur);
+		resultat.suivant = this.suivant; 
+		this.suivant = resultat; 
+		return resultat; 
+	}
 }
