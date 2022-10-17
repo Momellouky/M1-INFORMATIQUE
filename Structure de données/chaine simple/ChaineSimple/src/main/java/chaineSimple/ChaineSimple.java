@@ -35,4 +35,20 @@ public class ChaineSimple<E> {
 	public ChaineSimple(E valeur ) {
 		this(valeur, null); 
 	}
+	
+	/**
+	 * une version iterative de la méthode toString. 
+	 * 
+	 * @return une chaine de caractaire représentant la chaine
+	 * simple. e.g la liste 2 -> 3 -> 7 est affichée de cette facon : 
+	 * ( 2, 3, 7 )
+	 */
+	@Override
+	public String toString() {
+		String resultat = "( "; 
+		for(ChaineSimple<E> courante = this; courante != null; courante = courante.suivant ) {
+			resultat = courante.valeur + (courante.suivant == null ? " )" : ", ") ;
+		}
+		return resultat; 
+	}
 }
