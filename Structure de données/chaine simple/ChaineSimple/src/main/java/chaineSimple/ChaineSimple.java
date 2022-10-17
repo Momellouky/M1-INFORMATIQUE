@@ -92,7 +92,7 @@ public class ChaineSimple<E> {
 		if(this == o) return false; 
 		if(!( o instanceof ChaineSimple)) return false; 
 		ChaineSimple<E> temp = (ChaineSimple<E>) o ; 
-		for(ChaineSimple<E> courent = this, oCourent = temp; courent != null; courent = courent.suivant) {
+		for(ChaineSimple<E> courent = this, oCourent = temp; courent != null, || oCourent != null; courent = courent.suivant) {
 			if(courent.valeur != oCourent.valeur) return false; 
 		}
 		return true; 
