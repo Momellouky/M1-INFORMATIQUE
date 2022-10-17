@@ -67,4 +67,35 @@ public class ChaineSimple<E> {
 		return resultat; 
 	}
 	
+	/**
+	 * Permet de supprimer l'élément suivant le debut 
+	 * de la chaine simple.
+	 *
+	 * @return une chaine simple réduite à un seule élément, celui supprimé. 
+	 */
+	public ChaineSimple<E> supprimerElementSuivant(){
+		return null; // Pas encore implémentée.
+	}
+	
+	/**
+	 * Permet de verifier l'égalité de deux chaine simple.
+	 * Une chaine simple égale une autre chaine simple o, 
+	 * si et seulement s'elles ont les memes valeur, ou bien 
+	 * elles désignent la meme chaine. 
+	 * 
+	 * @param o : la deuxième chaine avec laquelle on veut comparer. 
+	 * @return true si les deux chaines sont égales.
+	 * 			false sinon, ou bien si la chaine o est null. 
+	 */
+	public boolean equals(Object o) {
+		if(o == null) return false; 
+		if(this == o) return false; 
+		if(!( o instanceof ChaineSimple)) return false; 
+		ChaineSimple<E> temp = (ChaineSimple<E>) o ; 
+		for(ChaineSimple<E> courent = this, oCourent = temp; courent != null; courent = courent.suivant) {
+			if(courent.valeur != oCourent.valeur) return false; 
+		}
+		return true; 
+	}
+	
 }
